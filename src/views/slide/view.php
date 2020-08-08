@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </h4>
         <p>
             <a class="btn btn-outline-light" href="<?= Url::to(['create']); ?>"
-                title="<?= SlideModule::t('slide', 'Create'); ?>">
+               title="<?= SlideModule::t('slide', 'Create'); ?>">
                 <i class="fa fa-plus"></i> <?= SlideModule::t('slide', 'Create'); ?></a>
             <?= Html::a(SlideModule::t('slide', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a(SlideModule::t('slide', 'Delete'), ['delete', 'id' => $model->id], [
@@ -47,9 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= DetailView::widget([
                     'model' => $model,
                     'attributes' => [
-						'id',
-						'title',
-						'slug',
+                        'id',
+                        'title',
+                        'slug',
                         [
                             'attribute' => 'image',
                             'format' => 'html',
@@ -62,9 +62,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'width' => 150,
                             ],
                         ],
-						'link',
-						'description:html',
-						'position',
+                        'link',
+                        'description:html',
+                        'position',
                         [
                             'attribute' => 'status',
                             'value' => function ($model) {
@@ -74,11 +74,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute' => 'language',
                             'value' => function ($model) {
+                                if ($model->language == null)
+                                    return null;
                                 return Yii::$app->getModule('slide')->params['availableLocales'][$model->language];
                             },
                         ],
-						'created_at:datetime',
-						'updated_at:datetime',
+                        'created_at:datetime',
+                        'updated_at:datetime',
                         [
                             'attribute' => 'userCreated.userProfile.fullname',
                             'label' => SlideModule::t('slide', 'Created By')
