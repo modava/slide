@@ -2,14 +2,14 @@
 
 namespace modava\slide\models\table;
 
+use backend\components\MyModel;
 use common\models\User;
 use modava\slide\models\query\SlideQuery;
 use modava\slide\models\SlideCategory;
 use modava\slide\models\SlideType;
 use Yii;
-use yii\db\ActiveRecord;
 
-class SlideTable extends ActiveRecord
+class SlideTable extends MyModel
 {
     const STATUS_DISABLED = 0;
     const STATUS_PUBLISHED = 1;
